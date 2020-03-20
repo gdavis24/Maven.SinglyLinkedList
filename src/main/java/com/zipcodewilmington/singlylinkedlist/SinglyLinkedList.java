@@ -6,16 +6,32 @@ package com.zipcodewilmington.singlylinkedlist;
 public class SinglyLinkedList {
     Node head;
 
+
     class Node {
-        int data;
+        String word;
         Node next;
 
-        Node(int d){
-            data = d;
+        public Node(String d){
+            word = d;
             next = null;
         }
-    }
 
+    }
+    public void add(String word){
+        Node node = new Node(word);
+        node.word = "";
+        if (head == null){
+            head = node;
+        }
+        else{
+            Node temp = head;
+            while (temp.next != null){
+                temp = temp.next;
+            }
+            temp.next = node;
+        }
+
+    }
     public Node getNode(Integer index){
         Node temp = head;
         for (int i = 0; i < index; i++) {
@@ -24,7 +40,7 @@ public class SinglyLinkedList {
         return temp.next;
     }
 
-    public void addNode(Integer data){
+    public void addNode(String data){
         Node node = new Node(data);
         if (head == null){
             head = node;
@@ -39,15 +55,15 @@ public class SinglyLinkedList {
 
     }
 
-    public void removeAtIndex(){
+    public void removeAtIndex(Integer index){
 
     }
 
-    public Boolean contains(){
+    public Boolean contains(Integer data){
         return null;
     }
 
-    public Integer find(){
+    public Integer find(Integer index){
         return null;
     }
 
@@ -55,7 +71,11 @@ public class SinglyLinkedList {
         return null;
     }
 
-    public Node copy(){
+    public static SinglyLinkedList copy(SinglyLinkedList list){
         return null;
+    }
+
+    public void sort(){
+
     }
 }

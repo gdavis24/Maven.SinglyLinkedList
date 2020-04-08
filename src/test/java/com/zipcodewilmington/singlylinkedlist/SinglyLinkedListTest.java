@@ -19,27 +19,34 @@ public class SinglyLinkedListTest {
         sl.add("Iron Man");
     }
 
+    @Test
+    public void findTest(){
+        int expected = 2;
+        int actual = sl.find("Iron Man");
+        Assert.assertEquals(expected,actual);
+    }
 
+    @Test
+    public void copyTest(){
+        SinglyLinkedList sl2 = SinglyLinkedList.copy(sl);
+        Assert.assertFalse(sl2==sl);
+    }
+
+    @Test
+    public void getNodeTest(){
+        String expected = "Iron Man";
+        String  actual = sl.getNode(2).word;
+        Assert.assertEquals(expected, actual);
+    }
 
     @Test
     public void removeAtTest(){
-        sl.removeAtIndex(1);
-        int expected = 11;
-        int actual = sl.find(1);
-        Assert.assertEquals(expected,actual);
+
     }
 
     @Test
     public void containsTest(){
-        Assert.assertTrue( sl.contains(11));
-    }
-
-    @Test
-    public void findTest(){
-        sl.find(1);
-        int expected = 2;
-        int actual = sl.find(1);
-        Assert.assertEquals(expected,actual);
+        Assert.assertTrue( sl.contains("I"));
     }
 
     @Test
@@ -48,21 +55,4 @@ public class SinglyLinkedListTest {
         int actual = sl.size();
         Assert.assertEquals(expected,actual);
     }
-
-
-    @Test
-    public void copyTest(){
-        SinglyLinkedList sl2 = SinglyLinkedList.copy(sl);
-        Assert.assertFalse(sl2==sl);
-    }
-
-//    @Test
-//    public void sortTest(){
-//
-//        sl.sort();
-//
-//        String expected = "2\n5\n11";
-//        String actual = sl.printAllNodes();
-//        Assert.assertEquals(expected,actual);
-//    }
 }

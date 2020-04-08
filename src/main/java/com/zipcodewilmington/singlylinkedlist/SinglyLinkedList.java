@@ -11,15 +11,15 @@ public class SinglyLinkedList {
         String word;
         Node next;
 
-        public Node(String d){
-            word = d;
-            next = null;
+        public Node(String word){
+            this.word = word;
+            this.next = null;
         }
 
     }
     public void add(String word){
         Node node = new Node(word);
-        node.word = "";
+
         if (head == null){
             head = node;
         }
@@ -33,42 +33,77 @@ public class SinglyLinkedList {
 
     }
     public Node getNode(Integer index){
-        Node temp = head;
-        for (int i = 0; i < index; i++) {
-            temp = temp.next;
-        }
-        return temp.next;
-    }
-
-    public void addNode(String data){
-        Node node = new Node(data);
-        if (head == null){
-            head = node;
+        Node current = head;
+        Integer count = 0;
+        if (current == null){
+            return null;
         }
         else {
-            Node temp = head;
-            if (temp.next != null) {
-                temp = temp.next;
+            while (!count.equals(index)){
+                current = current.next;
+                count++;
+                if (current == null){
+                    break;
+                }
             }
-            temp.next = node;
+            if (current != null){
+                return current;
+            }
         }
-
+        return null;
     }
+
 
     public void removeAtIndex(Integer index){
-
+        if (head == null)
+            return;
+        Node temp = head;
+        if (index == 0)
+        {
+            head = temp.next;
+            return;
+        }
+        for (int i = 0; temp != null && i < index - 1; i++)
+            temp = temp.next;
+        if (temp == null || temp.next == null)
+            return;
+        Node next = temp.next;
+        temp.next = next;
     }
 
-    public Boolean contains(Integer data){
+    public Boolean contains(String data){
         return null;
     }
 
-    public Integer find(Integer index){
-        return null;
+    public Integer find(String word){
+        Node current = head;
+        Integer index = 0;
+        if (current == null){
+            return -1;
+        }
+        else {
+            while (!current.word.equals(word)){
+                current = current.next;
+                index++;
+                if (current == null){
+                    break;
+                }
+            }
+            if (current != null && current.word.equals(word)){
+                return index;
+            }
+        }
+        return -1;
     }
 
     public Integer size(){
-        return null;
+        int size = 1;
+        Node temp = head;
+        while (temp.next != null) {
+            size++;
+            temp = temp.next;
+        }
+        return size;
     }
 
     public static SinglyLinkedList copy(SinglyLinkedList list){
